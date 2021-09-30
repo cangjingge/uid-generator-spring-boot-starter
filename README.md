@@ -2,7 +2,7 @@
        <dependency>
             <groupId>com.chungkui</groupId>
             <artifactId>uid-generator-spring-boot-starter</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0-bate</version>
         </dependency>
         
 启用配置
