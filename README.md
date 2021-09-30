@@ -1,17 +1,24 @@
 引入jar包
-       <dependency>
+      
+```
+ <dependency>
             <groupId>com.chungkui</groupId>
             <artifactId>uid-generator-spring-boot-starter</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+```
+
         
 启用配置
-    uid.enable=true    
+    `uid.enable=true  `  
 实现接口     
-   WorkerNodeDao
+   `WorkerNodeDao`
 开始使用
 
-       @Autowired
+     
+```
+  @Autowired
        UidGenerator uidGenerator;
        
        uidGenerator.getUID()
+```
