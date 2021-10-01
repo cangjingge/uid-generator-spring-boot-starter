@@ -16,7 +16,7 @@
 package com.baidu.fsg.uid.worker;
 
 
-import com.baidu.fsg.uid.worker.service.WorkerNodeService;
+import com.baidu.fsg.uid.worker.service.WorkerNodeEntityService;
 import com.baidu.fsg.uid.utils.DockerUtils;
 import com.baidu.fsg.uid.utils.NetUtils;
 import org.apache.commons.lang3.RandomUtils;
@@ -38,7 +38,7 @@ public class DisposableWorkerIdAssigner implements WorkerIdAssigner {
     private static final Logger LOGGER = LoggerFactory.getLogger(DisposableWorkerIdAssigner.class);
 
     @Resource
-    private WorkerNodeService workerNodeService;
+    private WorkerNodeEntityService workerNodeEntityService;
     /**
      * Assign worker id base on database.<p>
      * If there is host name & port in the environment, we considered that the node runs in Docker container<br>
@@ -53,7 +53,7 @@ public class DisposableWorkerIdAssigner implements WorkerIdAssigner {
         WorkerNodeEntity workerNodeEntity = buildWorkerNode();
 
         // add worker node for new (ignore the same IP + PORT)
-        Long id = workerNodeService.save(workerNodeEntity);
+        Long id = workerNodeEntityService.save(workerNodeEntity);
         LOGGER.info("Add worker node:" + workerNodeEntity);
         return id;
     }

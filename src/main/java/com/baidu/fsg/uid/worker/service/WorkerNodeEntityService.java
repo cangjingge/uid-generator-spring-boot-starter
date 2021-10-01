@@ -11,7 +11,7 @@ import com.baidu.fsg.uid.worker.entity.WorkerNodeEntity;
  * @author jason
  * @since 2021-10-1
  */
-public interface WorkerNodeService {
+public interface WorkerNodeEntityService {
 
     /**
      * 保存实体

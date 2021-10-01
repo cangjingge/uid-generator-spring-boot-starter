@@ -5,7 +5,7 @@
  <dependency>
             <groupId>com.chungkui</groupId>
             <artifactId>uid-generator-spring-boot-starter</artifactId>
-            <version>1.1-bate</version>
+            <version>1.3-bate</version>
         </dependency>
 ```
 
@@ -16,7 +16,7 @@
 
 ### 3.实现接口     
 
-`com.baidu.fsg.uid.worker.service.WorkerNodeService`
+`com.baidu.fsg.uid.worker.service.WorkerNodeEntityService`
 
 里面只有一个save方法，保存一个数据，然后返回保存的id即可；
 这里就和你使用的数据库框架解耦了；也就是对下面这张表的维护，交给你的项目中自带的技术来实现即可；jar包中不在干扰各自的技术实现

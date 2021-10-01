@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 package com.baidu.fsg.uid.worker;
-import com.baidu.fsg.uid.service.impl.DefaultUidGenerator;
+import com.baidu.fsg.uid.impl.DefaultUidGenerator;
 
 
 
