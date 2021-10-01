@@ -5,6 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "uid")
 public class UidProperties {
     private boolean enable;
+    private boolean enableCache;
     private int timeBits = 31;
     private int workerBits = 17;
     private int seqBits = 15;
@@ -39,5 +40,13 @@ public class UidProperties {
 
     public void setEnable(boolean enable) {
         this.enable = enable;
+    }
+
+    public boolean isEnableCache() {
+        return enableCache;
+    }
+
+    public void setEnableCache(boolean enableCache) {
+        this.enableCache = enableCache;
     }
 }

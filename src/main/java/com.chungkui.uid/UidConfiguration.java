@@ -1,6 +1,6 @@
 package com.chungkui.uid;
 
-import com.baidu.fsg.uid.dao.mapper.WorkerNodeDao;
+import com.baidu.fsg.uid.worker.service.WorkerNodeService;
 import com.baidu.fsg.uid.service.UidGenerator;
 import com.baidu.fsg.uid.service.impl.DefaultUidGenerator;
 import com.baidu.fsg.uid.worker.DisposableWorkerIdAssigner;
@@ -12,10 +12,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-//启动配置属性
 @EnableConfigurationProperties(UidProperties.class)
-//保证DemoService接口在
-@ConditionalOnBean(WorkerNodeDao.class)
+@ConditionalOnBean(WorkerNodeService.class)
 @ConditionalOnProperty(prefix = "uid", value = "enable", matchIfMissing = true)
 public class UidConfiguration {
 

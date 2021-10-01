@@ -16,8 +16,7 @@
 package com.baidu.fsg.uid.worker;
 
 
-import com.baidu.fsg.uid.dao.entity.WorkerNode;
-import com.baidu.fsg.uid.dao.mapper.WorkerNodeDao;
+import com.baidu.fsg.uid.worker.service.WorkerNodeService;
 import com.baidu.fsg.uid.utils.DockerUtils;
 import com.baidu.fsg.uid.utils.NetUtils;
 import org.apache.commons.lang3.RandomUtils;
@@ -28,33 +27,33 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
+import com.baidu.fsg.uid.worker.entity.WorkerNodeEntity;
 /**
- * Represents an implementation of {@link WorkerIdAssigner}, 
+ * Represents an implementation of {@link WorkerIdAssigner},
  * the worker id will be discarded after assigned to the UidGenerator
- * 
+ *
  * @author yutianbao
  */
 public class DisposableWorkerIdAssigner implements WorkerIdAssigner {
     private static final Logger LOGGER = LoggerFactory.getLogger(DisposableWorkerIdAssigner.class);
 
     @Resource
-    private WorkerNodeDao workerNodeDao;
+    private WorkerNodeService workerNodeService;
     /**
      * Assign worker id base on database.<p>
      * If there is host name & port in the environment, we considered that the node runs in Docker container<br>
      * Otherwise, the node runs on an actual machine.
-     * 
+     *
      * @return assigned worker id
      */
     @Override
     @Transactional
     public long assignWorkerId() {
         // build worker node entity
-        WorkerNode workerNodeEntity = buildWorkerNode();
+        WorkerNodeEntity workerNodeEntity = buildWorkerNode();
 
         // add worker node for new (ignore the same IP + PORT)
-        Long id = workerNodeDao.save(workerNodeEntity);
+        Long id = workerNodeService.save(workerNodeEntity);
         LOGGER.info("Add worker node:" + workerNodeEntity);
         return id;
     }
@@ -62,8 +61,8 @@ public class DisposableWorkerIdAssigner implements WorkerIdAssigner {
     /**
      * Build worker node entity by IP and PORT
      */
-    private WorkerNode buildWorkerNode() {
-        WorkerNode workerNodeEntity = new WorkerNode();
+    private WorkerNodeEntity buildWorkerNode() {
+        WorkerNodeEntity workerNodeEntity = new WorkerNodeEntity();
         if (DockerUtils.isDocker()) {
             workerNodeEntity.setType(WorkerNodeType.CONTAINER.value());
             workerNodeEntity.setHostName(DockerUtils.getDockerHost());

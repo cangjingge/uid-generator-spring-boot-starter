@@ -1,4 +1,4 @@
-package com.baidu.fsg.uid.dao.entity;
+package com.baidu.fsg.uid.worker.entity;
 
 
 
@@ -6,15 +6,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
- * <p>
- * 
- * </p>
- *
- * @author lyr
+ * @author jason
  * @since 2020-10-26
  */
 
-public class WorkerNode  {
+public class WorkerNodeEntity {
 
     private static final long serialVersionUID = 1L;
 
