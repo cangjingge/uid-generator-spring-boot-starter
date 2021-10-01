@@ -20,7 +20,9 @@
 
 里面只有一个save方法，保存一个数据，然后返回保存的id即可；
 这里就和你使用的数据库框架解耦了；也就是对下面这张表的维护，交给你的项目中自带的技术来实现即可；jar包中不在干扰各自的技术实现；
-如果你的项目中使用的是mybatis-plus,那么恭喜你，可以直接使用https://gitee.com/cangjingge/uid-generator-mybatis-plus-spring-boot-starter；完全不用实现任何接口
+如果你的项目中使用的是mybatis-plus,那么恭喜你，可以直接使用https://gitee.com/cangjingge/uid-generator-mybatis-plus-spring-boot-starter
+
+完全不用实现任何接口
 
 
 ```
